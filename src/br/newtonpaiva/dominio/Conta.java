@@ -35,8 +35,20 @@ public class Conta {
 
         saldo += valor;
         return saldo;
+    }
+
+    public void transferir(Conta destino, Double valor) {
+      if(this.getSaldo() < saldo)
+          throw new IllegalArgumentException("Opção não disponível");
+
+      if(this.equals(destino))
+          throw new IllegalArgumentException("Opção não disponível");
+
+          this.sacar(valor); //this (c) saca o valor.
+        destino.depositar(valor); // destino (c2) deposita o valor inserido.
 
     }
+
 
     public Integer getNumero() {
         return numero;
@@ -54,7 +66,6 @@ public class Conta {
         this.saldo = saldo;
 
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // caso as duas pisoções de memória seja iguais.
@@ -62,7 +73,6 @@ public class Conta {
         Conta conta = (Conta) o;
         return Objects.equals(numero, conta.numero);
     }
-
     @Override
     public int hashCode() { //pega algo e itens e converte em código (tipo criptografia)
         return Objects.hash(numero);
