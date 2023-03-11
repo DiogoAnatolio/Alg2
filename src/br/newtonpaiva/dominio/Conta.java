@@ -2,10 +2,10 @@ package br.newtonpaiva.dominio;
 
 import java.util.Objects;
 
-public class Conta {
+public class Conta implements Transferencia {
 
     private Integer numero;
-    private Double saldo;
+    protected Double saldo;
 
 
     public Conta() {
@@ -23,7 +23,7 @@ public class Conta {
 
     public Double sacar(Double valor) {
         if (valor == null || valor <= 0)
-            throw new IllegalArgumentException("Valor menos ou");
+            throw new IllegalArgumentException("Valor menor invalido");
 
         saldo -= valor;
         return saldo;
@@ -31,7 +31,7 @@ public class Conta {
 
     public Double depositar(Double valor) {
         if (valor == null || valor <= 0)
-            throw new IllegalArgumentException("Valor menos ou");
+            throw new IllegalArgumentException("Valor menor ou invalido");
 
         saldo += valor;
         return saldo;
@@ -44,7 +44,7 @@ public class Conta {
       if(this.equals(destino))
           throw new IllegalArgumentException("Opção não disponível");
 
-          this.sacar(valor); //this (c) saca o valor.
+      this.sacar(valor); //this (c) saca o valor.
         destino.depositar(valor); // destino (c2) deposita o valor inserido.
 
     }
