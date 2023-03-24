@@ -2,6 +2,7 @@ package br.newtonpaiva.ui;
 
 import br.newtonpaiva.dominio.Conta;
 import br.newtonpaiva.dominio.ContaEspecial;
+import br.newtonpaiva.dominio.ContaPoupanca;
 
 public class Main {
 
@@ -26,6 +27,11 @@ public class Main {
         System.out.println(c.getSaldo());
 
         ContaEspecial ce = new ContaEspecial();
+
+        ContaPoupanca cp = new ContaPoupanca();
+        cp.setSaldo(100.0);
+        cp.aplicarRendimentos(2.5);
+        System.out.println(cp.getSaldo());
 
 
     }
